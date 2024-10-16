@@ -3,7 +3,7 @@
 ## Version: @project-version@
 ## Author: Helimeisterb
 ## SavedVariables: MRTAutoNotesDB
-## IconTexture: Interface\AddOns\Cell\Media\icon.tga
+## IconTexture: //
 
 ## X-Curse-Project-ID: 
 ## X-Wago-ID: 
