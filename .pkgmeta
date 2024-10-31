@@ -1,0 +1,12 @@
+package-as: CronixUI_installer
+
+ignore:
+  - "*.md"
+  - "*.textile"
+  - Makefile
+  - .gitignore
+  - .github/*
+
+
+move-folders:
+  MRTAutoNotes/MRTAutoNotes: MRTAutoNotes
