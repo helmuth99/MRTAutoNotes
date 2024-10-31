@@ -1,12 +1,11 @@
-## Interface: 110002
+## Interface: 110005
 ## Title: MRTAutoNotes
 ## Version: @project-version@
 ## Author: Helimeisterb
-## SavedVariables: MRTAutoNotesDB
+##SavedVariablesPerCharacter: MRTAutoNotesDB
 ## IconTexture: //
 
-## X-Curse-Project-ID: 
-## X-Wago-ID: 
+## X-Wago-ID: 4N2mg9GL
 
 Libs\LibStub\LibStub.lua
 Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
@@ -18,6 +17,7 @@ Libs\AceConsole-3.0\AceConsole-3.0.xml
 Libs\AceGUI-3.0\AceGUI-3.0.xml
 Libs\AceConfig-3.0\AceConfig-3.0.xml
 
+Api.lua
 EncounterList.lua
 Frames/MainFrame.lua
 core.lua

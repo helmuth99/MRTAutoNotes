@@ -16,3 +16,16 @@ private.encounterList = {
         ["2922"] = "Queen Ansurek",
     } 
 }
+
+-- GetInstanceInfo() daten
+
+private.instanceID = {
+    ["2657"] = "Nerub-ar Palace",
+}
+
+private.difficulty = {
+    ["14"] = "normal",
+    ["15"] = "Heroic",
+    ["16"] = "Mythic",
+    ["17"] = "LFR"
+}

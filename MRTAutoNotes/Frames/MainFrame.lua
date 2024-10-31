@@ -2,6 +2,7 @@ Addon, private = ...
 
 local selectedInstance = "";
 local selectedEncounter = "";
+local selectedDifficulty = "";
 
 function private:GenerateInstanceList()
     list = {}
@@ -15,18 +16,24 @@ function private:ReturnEncounters(key)
     return private.encounterList[key]
 end
 
-local function GetSavedNote(instance, encounter)
+function private:GetSavedNote(instance, encounter, difficulty)
     if MRTAutoNotesDB.Notes[instance][encounter] == nil then
-        MRTAutoNotesDB.Notes[instance][encounter] = ""
+        MRTAutoNotesDB.Notes[instance][encounter] = {}
     end
-    return MRTAutoNotesDB.Notes[instance][encounter]
+    if MRTAutoNotesDB.Notes[instance][encounter][difficulty] == nil then
+        MRTAutoNotesDB.Notes[instance][encounter][difficulty] = ""
+    end
+    return MRTAutoNotesDB.Notes[instance][encounter][difficulty]
 end
 
-local function SetSavedNotes(instance, encounter, text)
+local function SetSavedNotes(instance, encounter, difficulty, text)
     if MRTAutoNotesDB.Notes[instance][encounter] == nil then
-        MRTAutoNotesDB.Notes[instance][encounter] = ""
+        MRTAutoNotesDB.Notes[instance][encounter] = {}
     end
-     MRTAutoNotesDB.Notes[instance][encounter] = text;
+    if MRTAutoNotesDB.Notes[instance][encounter][difficulty] == nil then
+        MRTAutoNotesDB.Notes[instance][encounter][difficulty] = ""
+    end
+     MRTAutoNotesDB.Notes[instance][encounter][difficulty] = text;
 end
 
 function private:CreateMainFrame()
@@ -62,6 +69,14 @@ function private:CreateMainFrame()
     dropdownEncounter:SetPoint("RIGHT")
     frame:AddChild(dropdownEncounter)
 
+    local dropdownDifficulty = AceGUI:Create("Dropdown")
+    dropdownDifficulty:SetLabel("Difficulty")
+    dropdownDifficulty:SetWidth(120)
+    dropdownDifficulty:SetList(private.difficulty)
+    selectedDifficulty = "14"
+    dropdownDifficulty:SetValue("14")
+    frame:AddChild(dropdownDifficulty)
+
     local editbox = AceGUI:Create("MultiLineEditBox")
     editbox:SetLabel("")
     editbox:SetRelativeWidth(0.9)
@@ -77,15 +92,27 @@ function private:CreateMainFrame()
     end )
 
     dropdownEncounter:SetCallback("OnValueChanged", function (widget, event, key, checked)
-        local note = GetSavedNote(selectedInstance, key)
+        editbox:SetText( private:GetSavedNote(selectedInstance, key, selectedDifficulty))
         selectedEncounter = key
-        editbox:SetText(note)
+    end)
+
+    dropdownDifficulty:SetCallback("OnValueChanged", function (widget, event, key, checked)
+        editbox:SetText( private:GetSavedNote(selectedInstance, selectedEncounter, key))
+        selectedDifficulty = key
     end)
 
     editbox:SetCallback("OnEnterPressed", function (widget, event, text)
-        SetSavedNotes(selectedInstance, selectedEncounter, text)
+        SetSavedNotes(selectedInstance, selectedEncounter, selectedDifficulty, text)
         MRTAutoNotes:Print("Saved Note")
     end)
+
+    --delete this before release
+    local testbutton = AceGUI:Create("Button")
+    testbutton:SetText("Test Dev only")
+    testbutton:SetCallback("OnClick", function (widget, event)
+        MRTAutoNotes:SetPersonalNote("test")
+        print("note set")
+        
+    end)
+    frame:AddChild(testbutton)
 end
-
-
