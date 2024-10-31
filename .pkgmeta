@@ -1,4 +1,4 @@
-package-as: CronixUI_installer
+package-as: MRTAutoNotes
 
 ignore:
   - "*.md"
