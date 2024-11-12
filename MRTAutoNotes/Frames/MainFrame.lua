@@ -106,13 +106,4 @@ function private:CreateMainFrame()
         MRTAutoNotes:Print("Saved Note")
     end)
 
-    --delete this before release
-    local testbutton = AceGUI:Create("Button")
-    testbutton:SetText("Test Dev only")
-    testbutton:SetCallback("OnClick", function (widget, event)
-        MRTAutoNotes:SetPersonalNote("test")
-        print("note set")
-        
-    end)
-    frame:AddChild(testbutton)
 end

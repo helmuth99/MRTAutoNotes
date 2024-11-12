@@ -26,16 +26,31 @@ local function Alert(text)
     
 end
 
+function MRTAutoNotes:SetPersonalNote(Note)
+    if not VMRT then 
+        MRTAutoNotes:print("Method Raid Tools is not loaded or has an error." )
+        return
+    end
+    VMRT.Note.SelfText = Note
+    if not GMRT.A.Note.allframes.UpdateText or not GMRT.A.Note.options.UpdatePageAfterGettingNote then
+        MRTAutoNotes:Print("Please open MRT on the Note Tab once to have them set automaticaly.")
+        return
+    end
+    GMRT.A.Note.allframes:UpdateText()
+    GMRT.A.Note.options:UpdatePageAfterGettingNote()
+    --_G.MRTNotePersonal.text:SetText(Note)
+end
+
 function MRTAutoNotes:ENCOUNTER_START(event, encounterID, encounterName, difficultyId, groupSize)
-    MRTAutoNotes:Print(event.." "..encounterID.." "..encounterName.." "..difficultyId.." "..groupSize)
+    MRTAutoNotes:Print(encounterID.." "..encounterName.." "..difficultyId.." "..groupSize)
     local name, instanceType, difficultyID, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceID, instanceGroupSize, LfgDungeonID = GetInstanceInfo()
     local instance = private.instanceID[tostring(instanceID)]
     if not instance then
         return
     end
-    local note =  private:GetSavedNote(instance, encounterID, difficultyId)
+    print(instance.." "..encounterID.." "..difficultyId)
+    local note =  private:GetSavedNote(instance, tostring(encounterID), tostring(difficultyId))
     if note == nil or note == "" then
-        --not overwritting notes that do not exist or are empty
         return
     end
     MRTAutoNotes:SetPersonalNote(note)
@@ -51,7 +66,6 @@ function MRTAutoNotes:OnInitialize()
     if MRTAutoNotesDB == nil then
         MRTAutoNotesDB = {}
         MRTAutoNotesDB.Notes = {
-
         }
     end 
 
