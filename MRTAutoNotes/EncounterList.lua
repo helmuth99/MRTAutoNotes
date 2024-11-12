@@ -3,6 +3,7 @@ Addon, private = ...
 
 
 --key=EncounterID value=encounterName
+--
 
 private.encounterList = {
     ["Nerub-ar Palace"] = {
@@ -17,14 +18,15 @@ private.encounterList = {
     } 
 }
 
--- GetInstanceInfo() daten
+-- GetInstanceInfo() daten curently not used 
 
 private.instanceID = {
     ["2657"] = "Nerub-ar Palace",
 }
+-----------
 
 private.difficulty = {
-    ["14"] = "normal",
+    ["14"] = "Normal",
     ["15"] = "Heroic",
     ["16"] = "Mythic",
     ["17"] = "LFR"

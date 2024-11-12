@@ -43,19 +43,14 @@ end
 
 function MRTAutoNotes:ENCOUNTER_START(event, encounterID, encounterName, difficultyId, groupSize)
     MRTAutoNotes:Print(encounterID.." "..encounterName.." "..difficultyId.." "..groupSize)
-    local name, instanceType, difficultyID, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceID, instanceGroupSize, LfgDungeonID = GetInstanceInfo()
-    local instance = private.instanceID[tostring(instanceID)]
-    if not instance then
-        return
-    end
-    print(instance.." "..encounterID.." "..difficultyId)
-    local note =  private:GetSavedNote(instance, tostring(encounterID), tostring(difficultyId))
+    local note =  private:GetSavedNote(tostring(encounterID), tostring(difficultyId))
     if note == nil or note == "" then
         return
     end
     MRTAutoNotes:SetPersonalNote(note)
 end
 
+--this is for dev use only
 function MRTAutoNotes:ZONE_CHANGED_NEW_AREA(event)
     local name, instanceType, difficultyID, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceID, instanceGroupSize, LfgDungeonID = GetInstanceInfo()
     MRTAutoNotes:Print("Dev: "..instanceID.." "..name)

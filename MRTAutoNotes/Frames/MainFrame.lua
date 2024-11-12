@@ -16,24 +16,24 @@ function private:ReturnEncounters(key)
     return private.encounterList[key]
 end
 
-function private:GetSavedNote(instance, encounter, difficulty)
-    if MRTAutoNotesDB.Notes[instance][encounter] == nil then
-        MRTAutoNotesDB.Notes[instance][encounter] = {}
+function private:GetSavedNote(encounter, difficulty)
+    if MRTAutoNotesDB.Notes[encounter] == nil then
+        MRTAutoNotesDB.Notes[encounter] = {}
     end
-    if MRTAutoNotesDB.Notes[instance][encounter][difficulty] == nil then
-        MRTAutoNotesDB.Notes[instance][encounter][difficulty] = ""
+    if MRTAutoNotesDB.Notes[encounter][difficulty] == nil then
+        MRTAutoNotesDB.Notes[encounter][difficulty] = ""
     end
-    return MRTAutoNotesDB.Notes[instance][encounter][difficulty]
+    return MRTAutoNotesDB.Notes[encounter][difficulty]
 end
 
-local function SetSavedNotes(instance, encounter, difficulty, text)
-    if MRTAutoNotesDB.Notes[instance][encounter] == nil then
-        MRTAutoNotesDB.Notes[instance][encounter] = {}
+local function SetSavedNotes(encounter, difficulty, text)
+    if MRTAutoNotesDB.Notes[encounter] == nil then
+        MRTAutoNotesDB.Notes[encounter] = {}
     end
-    if MRTAutoNotesDB.Notes[instance][encounter][difficulty] == nil then
-        MRTAutoNotesDB.Notes[instance][encounter][difficulty] = ""
+    if MRTAutoNotesDB.Notes[encounter][difficulty] == nil then
+        MRTAutoNotesDB.Notes[encounter][difficulty] = ""
     end
-     MRTAutoNotesDB.Notes[instance][encounter][difficulty] = text;
+     MRTAutoNotesDB.Notes[encounter][difficulty] = text;
 end
 
 function private:CreateMainFrame()
@@ -78,7 +78,7 @@ function private:CreateMainFrame()
     frame:AddChild(dropdownDifficulty)
 
     local editbox = AceGUI:Create("MultiLineEditBox")
-    editbox:SetLabel("")
+    editbox:SetLabel("Note")
     editbox:SetRelativeWidth(0.9)
     editbox:SetHeight(300)
     editbox:SetFullWidth(true)
@@ -92,17 +92,17 @@ function private:CreateMainFrame()
     end )
 
     dropdownEncounter:SetCallback("OnValueChanged", function (widget, event, key, checked)
-        editbox:SetText( private:GetSavedNote(selectedInstance, key, selectedDifficulty))
+        editbox:SetText( private:GetSavedNote(key, selectedDifficulty))
         selectedEncounter = key
     end)
 
     dropdownDifficulty:SetCallback("OnValueChanged", function (widget, event, key, checked)
-        editbox:SetText( private:GetSavedNote(selectedInstance, selectedEncounter, key))
+        editbox:SetText( private:GetSavedNote(selectedEncounter, key))
         selectedDifficulty = key
     end)
 
     editbox:SetCallback("OnEnterPressed", function (widget, event, text)
-        SetSavedNotes(selectedInstance, selectedEncounter, selectedDifficulty, text)
+        SetSavedNotes(selectedEncounter, selectedDifficulty, text)
         MRTAutoNotes:Print("Saved Note")
     end)
 
