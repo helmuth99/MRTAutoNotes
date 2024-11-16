@@ -1,6 +1,7 @@
 local addon, private = ...
 
 MRTAutoNotes = LibStub("AceAddon-3.0"):NewAddon("MRTAutoNotes", "AceConsole-3.0", "AceEvent-3.0")
+local alerted = false;
 
 function MRTAutoNotes:TablePrint(myTable)
     for key, value in pairs(myTable) do
@@ -53,7 +54,10 @@ end
 --this is for dev use only
 function MRTAutoNotes:ZONE_CHANGED_NEW_AREA(event)
     local name, instanceType, difficultyID, difficultyName, maxPlayers, dynamicDifficulty, isDynamic, instanceID, instanceGroupSize, LfgDungeonID = GetInstanceInfo()
-    MRTAutoNotes:Print("Dev: "..instanceID.." "..name)
+    if instanceType and (instanceType == "raid" or instanceType == "party") and not alerted then
+        Alert("Due to technical reason you have to open MRT and open the Note tab for MRTAutoNotes to work.")
+        alerted = true
+    end
 end
 
 function MRTAutoNotes:OnInitialize()
@@ -63,6 +67,7 @@ function MRTAutoNotes:OnInitialize()
         MRTAutoNotesDB.Notes = {
         }
     end 
+    alerted = false;
 
     for key, value in pairs(private:GenerateInstanceList()) do
         if MRTAutoNotesDB.Notes[key] == nil then
@@ -72,12 +77,12 @@ function MRTAutoNotes:OnInitialize()
     	
 
     self:RegisterEvent("ENCOUNTER_START")
-    --self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+    self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
     self:RegisterChatCommand("mrtnotes", "SlashCommand")
     self:RegisterChatCommand("mrtautonotes", "SlashCommand")
     self:RegisterChatCommand("mrtn", "SlashCommand")
     
     --temp fix
-    Alert("Due to technical reason you have to open MRT and open the Note tab for MRTAutoNotes to work.")
+    
 end

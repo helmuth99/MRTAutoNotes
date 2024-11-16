@@ -18,7 +18,7 @@ private.encounterList = {
     } 
 }
 
--- GetInstanceInfo() daten curently not used 
+-- GetInstanceInfo() data curently not used 
 
 private.instanceID = {
     ["2657"] = "Nerub-ar Palace",
