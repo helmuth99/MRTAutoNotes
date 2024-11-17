@@ -78,12 +78,14 @@ function private:CreateMainFrame()
     frame:AddChild(dropdownDifficulty)
 
     local editbox = AceGUI:Create("MultiLineEditBox")
+    editbox:DisableButton(true)
     editbox:SetLabel("Note")
     editbox:SetRelativeWidth(0.9)
-    editbox:SetHeight(300)
+    editbox:SetFullHeight(true)
     editbox:SetFullWidth(true)
     editbox:ClearAllPoints()
     editbox:SetPoint("BOTTOM")
+   
     frame:AddChild(editbox)
 
     dropdownInstance:SetCallback("OnValueChanged", function (widget, event, key, checked)
@@ -101,9 +103,8 @@ function private:CreateMainFrame()
         selectedDifficulty = key
     end)
 
-    editbox:SetCallback("OnEnterPressed", function (widget, event, text)
+    editbox:SetCallback("OnTextChanged", function (widget, event, text)
         SetSavedNotes(selectedEncounter, selectedDifficulty, text)
-        MRTAutoNotes:Print("Saved Note")
     end)
 
 end

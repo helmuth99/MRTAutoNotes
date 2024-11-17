@@ -44,6 +44,18 @@ end
 
 function MRTAutoNotes:ENCOUNTER_START(event, encounterID, encounterName, difficultyId, groupSize)
     MRTAutoNotes:Print(encounterID.." "..encounterName.." "..difficultyId.." "..groupSize)
+
+    --ugly but does work
+    if difficultyId == 1 then
+        difficultyId = 14
+    end
+    if difficultyId == 2 then
+        difficultyId = 15
+    end
+    if difficultyId == 8 then
+        difficultyId = 16
+    end
+        -- end
     local note =  private:GetSavedNote(tostring(encounterID), tostring(difficultyId))
     if note == nil or note == "" then
         return

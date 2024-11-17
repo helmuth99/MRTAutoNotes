@@ -15,7 +15,8 @@ private.encounterList = {
         ["2920"] = "Nexus-Princess Ky'veza",
         ["2921"] = "The Silken Court",
         ["2922"] = "Queen Ansurek",
-    } 
+    } ,
+
 }
 
 -- GetInstanceInfo() data curently not used 
