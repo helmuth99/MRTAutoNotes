@@ -7,7 +7,6 @@ To open MRTAutoNotes use one of the folling chat command: /mrtn /mrtautonotes /m
 # Disclaimer
 
 Due to technical reasons, after each reload or loggin you have to open Method Raid Tools once on the Notes Tab. There is a warning on each load ingame.
-You have to click on "Accept" to save the note, it will not save on every edit. (feedback would be nice here)
 
 # Upcoming features
 
