@@ -14,7 +14,7 @@ Due to technical reasons, after each reload or loggin you have to open Method Ra
 -   Dungeons encounter will be added.
 -   If possible, to remove the mandetory step to open MRT every reload.
 
-If you want to suggest any feature or bug please report them here: https://github.com/davidgroves/MRTNoteImporter/issues
+If you want to suggest any feature or bug please report them here: https://github.com/helmuth99/MRTAutoNotes/issues
 
 # Addons
 
