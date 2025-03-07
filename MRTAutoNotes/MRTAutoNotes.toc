@@ -1,9 +1,8 @@
-## Interface: 110005
+## Interface: 110005, 110100
 ## Title: MRTAutoNotes
 ## Version: @project-version@
 ## Author: Helimeisterb
 ##SavedVariablesPerCharacter: MRTAutoNotesDB
-## IconTexture: //
 
 ## X-Wago-ID: 4N2mg9GL
 ## X-Curse-Project-ID: 1138924
