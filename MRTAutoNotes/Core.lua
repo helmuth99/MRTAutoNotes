@@ -43,16 +43,16 @@ function MRTAutoNotes:SetPersonalNote(Note)
 end
 
 function MRTAutoNotes:ENCOUNTER_START(event, encounterID, encounterName, difficultyId, groupSize)
-    MRTAutoNotes:Print(encounterID.." "..encounterName.." "..difficultyId.." "..groupSize)
+    --MRTAutoNotes:Print(encounterID.." "..encounterName.." "..difficultyId.." "..groupSize)
 
-    --ugly but does work
+    --ugly but does work Translation layer
     if difficultyId == 1 then
         difficultyId = 14
     end
     if difficultyId == 2 then
         difficultyId = 15
     end
-    if difficultyId == 8 then
+    if difficultyId == 8 or difficultyId == 23 then
         difficultyId = 16
     end
         -- end
