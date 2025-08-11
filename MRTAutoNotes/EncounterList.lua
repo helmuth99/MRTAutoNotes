@@ -25,6 +25,16 @@ private.encounterList = {
         ["3014"] = "The One-Armed Bandit",
         ["3015"] = "Mug'Zee, Heads of Security",
         ["3016"] = "Chrome King Gallywix",
+    },
+    ["Manaforge Omega"] = {
+        ["3129"] = "Plexus Sentinel",
+        ["3131"] = "Loom'ithar",
+        ["3130"] = "Soulbinder Naazindhri",
+        ["3132"] = "Forgeweaver Araz",
+        ["3122"] = "The Soul Hunters",
+        ["3133"] = "Fractillus",
+        ["3134"] = "Nexus-King Salhadaar",
+        ["3135"] = "Dimensius, the All-Devouring",
     }
 
 }
@@ -33,7 +43,8 @@ private.encounterList = {
 
 private.instanceID = {
     ["2657"] = "Nerub-ar Palace",
-    ["g458"] = "Liberation of Undermine"
+    ["g458"] = "Liberation of Undermine",
+    ["g463"] = "Manaforge Omega",
 }
 -----------
 
