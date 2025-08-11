@@ -1,4 +1,4 @@
-## Interface: 110005, 110100
+## Interface: 110005, 110100, 110200
 ## Title: MRTAutoNotes
 ## Version: @project-version@
 ## Author: Helimeisterb
